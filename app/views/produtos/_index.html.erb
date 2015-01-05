@@ -4,7 +4,7 @@
         <tr>
             <th>Nome</th>
             <th>Preço</th>
-            <th>Url</th>
+            <th>Url-Produto</th>
         </tr>
     </thead>
     <tbody>
@@ -13,7 +13,7 @@
         <tr>
           <td><%= produto.nome %></td>
           <td><%= produto.preco%></td>
-          <td><%= produto.url  %></td>
+          <td><a href="<%= produto.url %>">Conferir</a></td>
         </tr>
       <% end %>
     </tbody>

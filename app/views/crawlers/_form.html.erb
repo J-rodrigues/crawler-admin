@@ -10,53 +10,53 @@
     </div>
   <% end %>
                                    
-<div class="text-left">
-  <div class="field list-group-item">
-    <%= f.label :site_url %><br>
-    <%= f.text_field :site_url, class: 'form-control' %>
-  </div>
+  <div class="text-left">
+    <div class="field list-group-item">
+      <%= f.label :site_url %><br>
+      <%= f.text_field :site_url, class: 'form-control' %>
+    </div>
 
-  <div class="field list-group-item">
-    <%= f.label :css_box %><br>
-    <%= f.text_field :css_box, class: 'form-control' %>
-  </div>
+    <div class="field list-group-item">
+      <%= f.label :css_box %><br>
+      <%= f.text_field :css_box, class: 'form-control' %>
+    </div>
 
-  <div class="field list-group-item">
-    <%= f.label :css_nome %><br>
-    <%= f.text_field :css_nome, class: 'form-control' %>
-  </div>
+    <div class="field list-group-item">
+      <%= f.label :css_nome %><br>
+      <%= f.text_field :css_nome, class: 'form-control' %>
+    </div>
 
-  <div class="field list-group-item">
-    <%= f.label :css_preco %><br>
-    <%= f.text_field :css_preco, class: 'form-control' %>
-  </div>
+    <div class="field list-group-item">
+      <%= f.label :css_preco %><br>
+      <%= f.text_field :css_preco, class: 'form-control' %>
+    </div>
 
-  <div class="field list-group-item">
-    <%= f.label :css_url %><br>
-    <%= f.text_field :css_url, class: 'form-control' %>
-  </div>
+    <div class="field list-group-item">
+      <%= f.label :css_url %><br>
+      <%= f.text_field :css_url, class: 'form-control' %>
+    </div>
 
-  <%= @crawlers = Crawler.all
-      tc = @crawlers.count + 1
-      f.hidden_field :loja_id, :value => tc
-  %>
-  
-  <div class="field list-group-item">
-    <%= f.label :loja_nome %><br>
-    <%= f.text_field :loja_nome, class: 'form-control' %>
-  </div>
+    <%= @crawlers = Crawler.all
+        tc = @crawlers.count + 1
+        f.hidden_field :loja_id, :value => tc
+    %>
+    
+    <div class="field list-group-item">
+      <%= f.label :loja_nome %><br>
+      <%= f.text_field :loja_nome, class: 'form-control' %>
+    </div>
 
-  <div class="field list-group-item">
-    <%= f.label :categoria_id %><br>
-    <select class="form-control" name="crawler[categoria_id]">
-      <option value="1">Celular</option>
-      <option value="2">Camera Digital</option>
-      <option value="3">NoteBook</option>
-    </select>
-  </div>
-</div>                                                                    
+    <div class="field list-group-item">
+      <%= f.label :categoria_id %><br>
+      <select class="form-control" name="crawler[categoria_id]">
+        <option value="1">Celular</option>
+        <option value="2">Camera Digital</option>
+        <option value="3">NoteBook</option>
+      </select>
+    </div>
+  </div>                                                                    
   <br>
   <div class="actions text-right">
-    <button type="submit" class="btn btn-sm btn-info">Create New Site</button>
+    <button type="submit" class="btn btn-sm btn-info">Criar Novo Site</button>
   </div>
 <% end %>

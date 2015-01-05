@@ -42,7 +42,7 @@ class CrawlersController < ApplicationController
   def update
     respond_to do |format|
       if @crawler.update(crawler_params)
-        format.html { redirect_to @crawler, notice: 'Crawler was successfully updated.' }
+        format.html { redirect_to :controller => "dashboards", :action => "index", notice: 'Crawler was successfully updated.' }
         format.json { render :show, status: :ok, location: @crawler }
       else
         format.html { render :edit }

@@ -23,9 +23,15 @@
         </thead>
         <tbody>
             <tr>
+              <% if @produtos.first != nil %>
                 <td><%= @produtos.count %></td>
                 <td><%= @produtos.first.created_at.to_s.split[1] %>/<%= @produtos.last.created_at.to_s.split[1] %></td>
                 <td><%= @produtos.first.created_at.to_s.split[0] %></td>
+              <% else %>
+                <td>Vazio</td>
+                <td>Vazio</td>
+                <td>Vazio</td>
+              <% end %>
                 <td><button type="submit" class="btn btn-sm btn-warning">Start</button></td>
             </tr>
         </tbody>
