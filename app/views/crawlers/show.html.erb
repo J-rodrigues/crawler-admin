@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Site url:</strong>
+  <%= @crawler.site_url %>
+</p>
+
+<p>
+  <strong>Css box:</strong>
+  <%= @crawler.css_box %>
+</p>
+
+<p>
+  <strong>Css nome:</strong>
+  <%= @crawler.css_nome %>
+</p>
+
+<p>
+  <strong>Css preco:</strong>
+  <%= @crawler.css_preco %>
+</p>
+
+<p>
+  <strong>Css url:</strong>
+  <%= @crawler.css_url %>
+</p>
+
+<p>
+  <strong>Loja:</strong>
+  <%= @crawler.loja_id %>
+</p>
+
+<%= link_to 'Edit', edit_crawler_path(@crawler) %> |
+<%= link_to 'Back', crawlers_path %>

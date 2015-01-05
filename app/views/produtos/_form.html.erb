@@ -1,0 +1,35 @@
+<%= form_for(@produto = Produto.new) do |f| %>
+<% @produtos = Produto.all %>
+  <% if @produto.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@produto.errors.count, "error") %> prohibited this produto from being saved:</h2>
+      <ul>
+      <% @produto.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="panel-body">
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover table-striped">
+        <thead>
+            <tr>
+                <th>Total Prod</th>
+                <th>Data Inicial/Final</th>
+                <th>Data Col.</th>
+                <th>Atualizar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><%= @produtos.count %></td>
+                <td><%= @produtos.first.created_at.to_s.split[1] %>/<%= @produtos.last.created_at.to_s.split[1] %></td>
+                <td><%= @produtos.first.created_at.to_s.split[0] %></td>
+                <td><button type="submit" class="btn btn-sm btn-warning">Start</button></td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+<% end %>

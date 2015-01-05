@@ -1,0 +1,90 @@
+require "open-uri"
+require "hpricot"
+
+
+site  = Hpricot(open("http://www.americanas.com.br/linha/350392/celulares-e-telefones/smartphone?ofertas.limit=7"))
+box   = site.search(".has-invoiceprice")
+quant = box.count
+loja  = 1
+
+puts "Quantidade de produtos"
+puts quant
+
+def crawler(site, quant, loja, box)
+	for i in 0..quant-1
+		begin
+			nome  = box[i].search(".prodTitle").attr('title')
+			preco = box[i].search(".sale.price strong .product-price-integer").text
+			url   = box[i].search(".productImg .url").attr('href')
+			
+	    	raise "Produto #{i}: #{nome.split[0] + " " + nome.split[1]}"
+	   		rescue Exception => e
+	   			puts e.message
+	    end
+		Produto.create(nome: nome, preco: preco, url: url, loja_id: loja)
+	end
+end
+
+crawler(site, quant, loja, box)
+
+
+puts "Rake com sucesso!!!"
+
+
+
+
+class Crawler < ActiveRecord::Base
+
+	require "open-uri"
+	require "hpricot"
+
+	def box
+		uri  = "http://www.americanas.com.br/linha/350392/celulares-e-telefones/smartphone?ofertas.limit=7"
+		site = Hpricot(open(uri))
+		box  = site.search(".has-invoiceprice")
+		return box
+	end
+
+	def nome
+		css = ".prodTitle"
+		return css
+	end
+
+	def preco
+		css = ".sale.price strong .product-price-integer"
+		return css
+	end
+
+	def url
+		css = ".productImg .url"
+		return css
+	end
+
+	def loja
+		loja = 1
+		return loja	
+	end
+
+	def update_column(name, value)
+  		update_columns(name => value)
+	end
+end
+
+class CreateCrawlers < ActiveRecord::Migration
+  def change
+    create_table :crawlers do |t|
+      t.string :site_url
+      t.string :ccs_box
+      t.string :css_nome
+      t.string :css_preco
+      t.string :css_url
+      t.string :loja_id
+    end
+  end
+end
+
+
+
+http://www.americanas.com.br/linha/350392/celulares-e-telefones/smartphone?ofertas.limit=80 	.has-invoiceprice 	.prodTitle 	.sale.price strong .product-price-integer 	.productImg .url
+
+http://www.pontofrio.com.br/TelefoneseCelulares/Smartphones/?Filtro=C38_C326_M19 	.hproduct 	.link.url 	.productDetails .for.price.sale strong 	.link.url
