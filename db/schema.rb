@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20141231203640) do
     t.string   "preco"
     t.string   "url"
     t.string   "loja_id"
+    t.string   "categoria_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -7,7 +7,10 @@ class ProdutosController < ApplicationController
     @q = Produto.all
     @produtos = @q.page(params[:page]).order("id").per(2)
   end
-  
+
+  def _vitrine
+    @celulares = Produto.where("categoria_id = 1")
+  end
 
   # GET /produtos/1
   # GET /produtos/1.json

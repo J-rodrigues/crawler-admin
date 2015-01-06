@@ -5,6 +5,8 @@ class CreateProdutos < ActiveRecord::Migration
       t.string :preco
       t.string :url
       t.string :loja_id
+      t.string :categoria_id
+      
       t.timestamps
     end
   end

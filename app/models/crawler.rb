@@ -27,6 +27,11 @@ class Crawler < ActiveRecord::Base
     	return @crawler.first.loja_id
  	end
 
+ 	def find_cat_by_url_id(id)
+    	@crawler = Crawler.where(:id => id)
+    	return @crawler.first.categoria_id
+ 	end
+
 	def box(id)
 		find_by_id(id)
 		uri  = @crawler.first.site_url

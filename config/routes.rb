@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
   resources :crawlers
 
-  resources :produtos
-
   resources :dashboards
+
+  resource :produtos do
+    get "_vitrine"
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

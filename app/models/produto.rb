@@ -16,11 +16,12 @@ class Produto < ActiveRecord::Base
 			puts ""
 			puts "Coleta por url-Id: #{l}"
 			id = l
-			loja_id = crawler.find_by_id(l)
+			loja_id = crawler.find_by_id(id)
 			boxP    = crawler.box(id)
 			nomeP   = crawler.nome(id)
 			precoP  = crawler.preco(id)
 			urlP    = crawler.url(id)
+			cat_id  = crawler.find_cat_by_url_id(id)
 			quantP  = boxP.count
 
 			for i in 0..quantP-1
@@ -33,9 +34,12 @@ class Produto < ActiveRecord::Base
 			   		rescue Exception => e
 			   			puts e.message
 			    end
-				Produto.create(nome: nome, preco: preco, url: url, loja_id: id)
+			    if (preco == nil || preco == '' || preco == ' ' )
+					puts "Sem preco: #{i}"
+				else
+					Produto.create(nome: nome, preco: preco, url: url, loja_id: id, categoria_id: cat_id)
+				end
 			end
 		end
-	end
-	
+	end	
 end
