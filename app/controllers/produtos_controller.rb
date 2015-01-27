@@ -12,6 +12,9 @@ class ProdutosController < ApplicationController
     @celulares = Produto.where("categoria_id = 1")
   end
 
+  def box
+    @celulares = Produto.where("categoria_id = 1")
+  end
   # GET /produtos/1
   # GET /produtos/1.json
   def show

@@ -3,8 +3,12 @@ Rails.application.routes.draw do
 
   resources :dashboards
 
+  resource :produtos
+
   resource :produtos do
     get "_vitrine"
+    get "box"
+    get "show"
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
